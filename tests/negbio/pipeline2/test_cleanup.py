@@ -15,12 +15,12 @@ def test_clean_sentences():
         p.add_annotation(ann)
 
     assert len(doc.passages[0].sentences) == 2
-    doc = cleanup(doc)
+    doc = cleanup.__call__(doc)
     assert len(doc.passages[0].sentences) == 0
     assert len(doc.passages[0].annotations) == 10
     for i in range(10):
         assert doc.passages[0].annotations[i].total_span.offset == 10 - i
 
-    doc = cleanup(doc, sort_anns=True)
+    doc = cleanup.__call__(doc, sort_anns=True)
     for i in range(10):
         assert doc.passages[0].annotations[i].total_span.offset == i + 1

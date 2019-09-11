@@ -2,7 +2,7 @@ import sys
 
 import pytest
 
-from negbio.pipeline.parse import NegBioParser
+from negbio.pipeline2.parse import NegBioParser
 from tests.negbio.utils import text_to_bioc
 
 
@@ -33,10 +33,10 @@ class TestNegBioParser:
         text = 'No pneumothorax.'
         tree = '(S1 (S (S (NP (DT No) (NN pneumothorax))) (. .)))'
         document = text_to_bioc([text], type='d/p/s')
-        d = parser.parse_doc(document)
+        d = parser.__call__(document)
         assert d.passages[0].sentences[0].infons['parse tree'] == tree
 
         # test empty sentence
         document = text_to_bioc([''], type='d/p/s')
-        d = parser.parse_doc(document)
+        d = parser.__call__(document)
         assert d.passages[0].sentences[0].infons['parse tree'] is None

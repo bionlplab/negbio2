@@ -4,13 +4,16 @@ import bioc
 
 import negbio
 from negbio.neg.neg_detector import Detector
-from negbio.pipeline.negdetect import NegBioNegDetector, is_neg_regex, _extend
-from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter
+from negbio.pipeline2.negdetect import NegBioNegDetector, is_neg_regex, _extend
+from negbio.pipeline2.ptb2ud import NegBioPtb2DepConverter
 from tests.negbio.utils import text_to_bioc
 
 __negbio_dir = Path(negbio.__file__).parent
+
 neg_pattern_file = __negbio_dir / 'patterns/neg_patterns.txt'
+
 uncertainty_pattern_file = __negbio_dir / 'patterns/uncertainty_patterns.txt'
+
 detector = NegBioNegDetector(Detector(
     neg_pattern_file=neg_pattern_file,
     uncertainty_pattern_file=uncertainty_pattern_file,
@@ -21,7 +24,7 @@ def _get_document(text, tree, sen_ann_index):
     d = text_to_bioc([text], type='d/p/s')
     d.passages[0].sentences[0].infons['parse tree'] = tree
     c = NegBioPtb2DepConverter()
-    c.convert_doc(d)
+    c.__call__(d)
     d.passages[0].add_annotation(d.passages[0].sentences[0].annotations[sen_ann_index])
     return d
 
@@ -30,7 +33,7 @@ def test_detect():
     text = 'No pneumothorax.'
     tree = '(S1 (S (S (NP (DT No) (NN pneumothorax))) (. .)))'
     d = _get_document(text, tree, 1)
-    detector.detect(d)
+    detector.__call__(d)
     assert d.passages[0].annotations[0].infons['negation'] == 'True'
 
 
@@ -43,7 +46,7 @@ def test_neg_regex():
     a.text = 'pneumothorax'
     a.add_location(bioc.BioCLocation(13, 12))
     d.passages[0].add_annotation(a)
-    detector.detect(d)
+    detector.__call__(d)
     assert d.passages[0].annotations[0].infons['negation'] == 'True'
 
 
@@ -54,7 +57,7 @@ def test_extend():
     a.text = 'pneumothorax'
     a.add_location(bioc.BioCLocation(13, 12))
     d.passages[0].add_annotation(a)
-    detector.detect(d)
+    detector.__call__(d)
 
     # fake ann
     a = bioc.BioCAnnotation()

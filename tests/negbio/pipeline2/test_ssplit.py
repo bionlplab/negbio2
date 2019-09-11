@@ -1,6 +1,6 @@
 import pytest
 
-from negbio.pipeline.ssplit import NegBioSSplitter
+from negbio.pipeline2.ssplit import NegBioSSplitter
 from tests.negbio.utils import text_to_bioc
 
 
@@ -64,7 +64,7 @@ class TestNegBioSSplitter:
         assert p.text == text
         assert len(p.sentences) == 0
 
-        document = splitter.split_doc(document)
+        document = splitter.__call__(document)
         p = document.passages[0]
         assert len(p.sentences) == 2
         assert p.sentences[0].text == 'No pneumothorax.'

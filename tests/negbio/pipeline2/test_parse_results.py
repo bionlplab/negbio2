@@ -1,8 +1,8 @@
 import pytest
 
-from negbio.pipeline.ptb2ud import NegBioPtb2DepConverter
+from negbio.pipeline2.ptb2ud import NegBioPtb2DepConverter
 from tests.negbio.utils import text_to_bioc
-from tests.negbio.pipeline.test_parse import parser
+from tests.negbio.pipeline2.test_parse import parser
 
 
 def test_parse():
@@ -26,9 +26,9 @@ def test_parse():
     d = text_to_bioc([text], type='d/p/s')
     s = d.passages[0].sentences[0]
     s.infons['parse tree'] = tree
-    converter.convert_doc(d)
+    converter.__call__(d)
 
-    print(repr(d))
+    # print(repr(d))
 
     for i, word in enumerate('no evidence of focal infiltrate , effusion or pneumothorax .'.split()):
         assert s.annotations[i].text == word

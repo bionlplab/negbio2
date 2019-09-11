@@ -12,7 +12,7 @@ Options:
 import bioc
 
 from negbio.cli_utils import parse_args
-from negbio.pipeline.text2bioc import text2collection
+from negbio.ext.text2bioc import text2collection
 
 if __name__ == '__main__':
     argv = parse_args(__doc__)

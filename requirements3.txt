@@ -1,7 +1,7 @@
 docutils==0.14
 docopt==0.6.2
 pytest==4.4.1
-networkx==2.1
+networkx==2.2
 ply==3.11
 tqdm==4.31.1
 nltk==3.4.1

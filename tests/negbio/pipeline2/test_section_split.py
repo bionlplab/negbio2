@@ -1,4 +1,4 @@
-from negbio.pipeline.section_split import split_document
+from negbio.pipeline2.section_split import SectionSplitter
 from tests.negbio.utils import text_to_bioc
 
 
@@ -10,7 +10,7 @@ impression: stable chest.
 dictating 
 """
     d = text_to_bioc([text], type='d/p')
-    d = split_document(d)
+    d = SectionSplitter().__call__(d)
     assert len(d.passages) == 4
     assert d.passages[0].text == 'findings:'
     assert d.passages[1].text == """pa and lat cxr at 7:34 p.m.. heart and mediastinum are

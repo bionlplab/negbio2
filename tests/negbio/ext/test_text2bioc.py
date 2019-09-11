@@ -3,7 +3,7 @@ import tempfile
 
 import bioc
 
-from negbio.pipeline.text2bioc import text2collection, printable, text2document, \
+from negbio.ext.text2bioc import text2collection, printable, text2document, \
     text_to_collection_file
 
 

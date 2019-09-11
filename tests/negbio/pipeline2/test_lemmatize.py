@@ -13,7 +13,7 @@ def test_lemmatize_doc():
     d = text_to_bioc([text], type='d/p/s')
     s = d.passages[0].sentences[0]
     s.infons['parse tree'] = tree
-    converter(d)
+    converter.__call__(d)
 
     expected = []
     for ann in s.annotations:
