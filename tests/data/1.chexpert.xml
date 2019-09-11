@@ -52,7 +52,7 @@ right picc with tip within the upper svc.</text>
       </annotation>
       <annotation id="2">
         <infon key="term">infiltrate</infon>
-        <infon key="observation">Airspace Opacity</infon>
+        <infon key="observation">Lung Opacity</infon>
         <infon key="annotator">CheXpert labeler</infon>
         <infon key="negation">True</infon>
         <location length="10" offset="163"/>
