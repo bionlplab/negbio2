@@ -9,8 +9,7 @@ from tests.negbio.utils import get_example_dir
 
 def test_chexpert_extractor():
     phrases_dir = Path(__file__).parent.parent.parent.parent / 'negbio/chexpert/phrases'
-    mention_phrases_dir = phrases_dir / 'mention'
-    unmention_phrases_dir = phrases_dir / 'unmention'
+    extractor = ChexpertExtractor(phrases_dir / 'phrases.yml')
 
     dir = get_example_dir()
     with open(dir / '1.chexpert.xml') as fp:
@@ -24,7 +23,6 @@ def test_chexpert_extractor():
             del p.annotations[:]
         expected_documents.append(doc)
 
-    extractor = ChexpertExtractor(mention_phrases_dir, unmention_phrases_dir)
     for expected_doc, actual_doc in zip(expected_documents, actual_documents):
         extractor.__call__(expected_doc)
         expected_anns = sorted(list(bioc.annotations(expected_doc, bioc.PASSAGE)),
