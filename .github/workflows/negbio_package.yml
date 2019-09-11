@@ -24,4 +24,4 @@ jobs:
         PYTHONPATH: .:$PYTHONPATH
       run: |
         pip install pytest
-        pytest
+        pytest test

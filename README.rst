@@ -4,13 +4,9 @@
 
 -----------------------
 
-.. image:: https://img.shields.io/travis/yfpeng/NegBio/master.svg
-   :target: https://travis-ci.org/yfpeng/NegBio
+.. image:: https://github.com/yfpeng/negbio2/workflows/negbio2/badge.svg
    :alt: Build status
-
-.. image:: https://img.shields.io/pypi/v/negbio.svg
-   :target: https://pypi.python.org/pypi/negbio
-   :alt: PyPI version
+   :target: https://github.com/yfpeng/negbio2
 
 .. image:: https://img.shields.io/readthedocs/negbio.svg
    :target: http://negbio.readthedocs.io
@@ -24,25 +20,13 @@ NegBio is a high-performance NLP tool for negation and uncertainty detection in 
 Get started
 ===========
 
-Install NegBio
-~~~~~~~~~~~~~~
+Download NegBio
+~~~~~~~~~~~~~~~
 
-1. Installing from source (recommended)
+.. code-block:: bash
 
-    .. code-block:: bash
-
-         $ git clone https://github.com/ncbi-nlp/NegBio.git
-         $ cd /path/to/negbio
-         $ python setup.py install --user
-         $ export PATH=~/.local/bin:$PATH
-
-2. Installing from pip
-
-    .. code-block:: bash
-
-        $ pip install negbio
-
-
+     $ git clone https://github.com/ncbi-nlp/NegBio.git
+     $ cd /path/to/negbio
 
 
 Prepare the dataset
