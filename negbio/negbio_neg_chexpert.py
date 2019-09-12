@@ -5,11 +5,11 @@ Usage:
     neg_chexpert [options] --output=<directory> <file> ...
 
 Options:
-    --neg-patterns=FILE                         Negation rules [default: patterns/chexpert_negation.txt]
+    --neg-patterns=FILE                         Negation rules [default: patterns/chexpert_negation.yml]
     --pre-negation-uncertainty-patterns=FILE    Pre negation uncertainty rules
-                                                [default: patterns/chexpert_pre_negation_uncertainty.txt]
+                                                [default: patterns/chexpert_pre_negation_uncertainty.yml]
     --post-negation-uncertainty-patterns=FILE   Post negation uncertainty rules
-                                                [default: patterns/chexpert_post_negation_uncertainty.txt]
+                                                [default: patterns/chexpert_post_negation_uncertainty.yml]
     --suffix=<suffix>                           Append an additional SUFFIX to file names. [default: .neg.xml]
     --verbose                                   Print more information about progress.
     --output=<directory>                        Specify the output directory.

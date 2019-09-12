@@ -68,6 +68,5 @@ def load_yml(filename) -> List[Dict]:
         patterns = yaml.load(fp, yaml.FullLoader)
 
     for p in patterns:
-        p['pattern_str'] = p['pattern']
-        p['pattern'] = compile(p['pattern'])
+        p['patternobj'] = compile(p['pattern'])
     return patterns

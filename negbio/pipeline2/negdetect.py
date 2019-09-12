@@ -35,7 +35,10 @@ def _mark_anns(annotations, begin, end, type, pattern):
         total_loc = ann.total_span
         if begin <= total_loc.offset and total_loc.offset + total_loc.length <= end:
             ann.infons[type] = 'True'
-            ann.infons['pattern'] = pattern
+            if 'pattern' in pattern:
+                ann.infons['pattern'] = str(pattern['pattern'])
+            if 'id' in pattern:
+                ann.infons['pattern_id'] = pattern['id']
 
 
 def _extend(document, type):
@@ -88,11 +91,14 @@ class NegBioNegDetector(Pipe):
                     if is_neg_regex(sentence.text):
                         _mark_anns(passage.annotations, sentence.offset,
                                    sentence.offset + len(sentence.text),
-                                   Detector.NEGATION, 'neg regular expression')
+                                   Detector.NEGATION,
+                                   {'id': 'neg regular expression',
+                                    'pattern': r'^(findings|impression): no '})
                         continue
                     for name, matcher, loc in self.detector.detect(sentence, sublocs):
                         logging.debug('Find: %s, %s, %s', name, matcher.pattern, loc)
-                        _mark_anns(passage.annotations, loc[0], loc[1], name, str(matcher.pattern))
+                        _mark_anns(passage.annotations, loc[0], loc[1], name,
+                                   self.detector.total_patterns[matcher.pattern])
 
             # _extend(document, Detector.NEGATION)
             # _extend(document, Detector.UNCERTAINTY)

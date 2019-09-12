@@ -19,7 +19,9 @@ class ModifiedDetector(neg_detector.Detector):
     def __init__(self, pre_negation_uncertainty_path,
                  negation_path, post_negation_uncertainty_path):
         super(ModifiedDetector, self).__init__(negation_path, post_negation_uncertainty_path)
-        self.preneg_uncertain_patterns = ngrex.load(pre_negation_uncertainty_path)
+        pupatterns = ngrex.load_yml(pre_negation_uncertainty_path)
+        self.preneg_uncertain_patterns = [p['patternobj'] for p in pupatterns]
+        self.total_patterns.update({p['patternobj']: p for p in pupatterns})
 
     def detect(self, sentence, locs):
         """Detect rules in report sentences.
