@@ -2,7 +2,7 @@
 Split text into sentences
 
 Usage:
-    negbio_pipeline ssplit [options] --output=<directory> <file> ...
+    negbio_ssplit [options] --output=<directory> <file> ...
 
 Options:
     --newline_is_sentence_break     Whether to treat newlines as sentence breaks. True means that

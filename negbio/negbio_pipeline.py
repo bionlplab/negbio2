@@ -28,7 +28,7 @@ def main():
     args = parse_args(__doc__, version='negbio version 2', options_first=True)
     logging.debug('CWD: %s', os.getcwd())
 
-    argv = [args['<command>']] + args['<args>']
+    argv = args['<args>']
     if args['<command>'] == 'text2bioc':
         exit(call(['python', '-m', 'negbio.negbio_text2bioc'] + argv))
     elif args['<command>'] == 'normalize':

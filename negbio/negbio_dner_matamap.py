@@ -2,7 +2,7 @@
 Detect UMLS concepts
 
 Usage:
-    negbio_pipeline dner_mm [options] --metamap=<binary> --output=<directory> <file> ...
+    negbio_dner_mm [options] --metamap=<binary> --output=<directory> <file> ...
 
 Options:
     --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .mm.xml]

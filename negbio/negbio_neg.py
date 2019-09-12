@@ -2,7 +2,7 @@
 Detect negation and uncertainty
 
 Usage:
-    negbio_pipeline neg [options] --output=<directory> <file> ...
+    negbio_neg [options] --output=<directory> <file> ...
 
 Options:
     --neg-patterns=<file>           Specify negation rules [default: patterns/neg_patterns.txt]
@@ -36,4 +36,4 @@ if __name__ == '__main__':
         pipeline.scan(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
                       overwrite=argv['--overwrite'])
     else:
-        calls_asynchronously(argv, 'python -m negbio.negbio_neg neg')
+        calls_asynchronously(argv, 'python -m negbio.negbio_neg')

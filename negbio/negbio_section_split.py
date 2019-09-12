@@ -2,7 +2,7 @@
 Split the report into sections based on titles.
 
 Usage:
-    negbio_pipeline section_split [options] --output=<directory> <file> ...
+    negbio_section_split [options] --output=<directory> <file> ...
 
 Options:
     --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .secsplit.xml]

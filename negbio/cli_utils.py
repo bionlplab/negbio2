@@ -34,18 +34,25 @@ def calls_asynchronously(argv, cmd_prefix):
     import concurrent.futures
     from subprocess import call
 
-    workers = int(argv['--workers'])
-    source = argv['<file>']
-    n = int(argv['--files_per_worker'])
+    workers = int(argv.pop('--workers'))
+    source = argv.pop('<file>')
+    n = int(argv.pop('--files_per_worker'))
+    output = argv.pop('--output')
 
     with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as executor:
         future_to_cmd = {}
         for i in range(0, len(source), n):
             chunk = source[i:i + n]
-            cmd = cmd_prefix + ' --output={} {}'.format(
-                argv['--output'],
-                ' '.join(chunk)
-            )
+            cmd = cmd_prefix
+            # extra args
+            for k, v in argv.items():
+                if isinstance(v, bool):
+                    if v:
+                        cmd += ' {}'.format(k)
+                else:
+                    cmd += ' {}={}'.format(k, v)
+            # output and input
+            cmd += ' --output={} {}'.format(output, ' '.join(chunk))
             logging.debug(cmd)
             future = executor.submit(call, cmd.split(' '))
             future_to_cmd[future] = cmd

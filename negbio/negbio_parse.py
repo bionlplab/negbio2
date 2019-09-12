@@ -2,7 +2,7 @@
 Parse sentences
 
 Usage:
-    negbio_pipeline parse [options] --output=<directory> <file> ...
+    negbio_parse [options] --output=<directory> <file> ...
 
 Options:
     --model=<directory>     Bllip parser model directory.
@@ -27,4 +27,4 @@ if __name__ == '__main__':
         pipeline.scan(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
                       overwrite=argv['--overwrite'])
     else:
-        calls_asynchronously(argv, 'python -m negbio.negbio_parse parse')
+        calls_asynchronously(argv, 'python -m negbio.negbio_parse')

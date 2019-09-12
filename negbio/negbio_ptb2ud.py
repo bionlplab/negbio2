@@ -2,7 +2,7 @@
 Convert from parse tree to universal dependencies
 
 Usage:
-    negbio_pipeline ptb2ud [options] --output=<directory> <file> ...
+    negbio_ptb2ud [options] --output=<directory> <file> ...
 
 Options:
     --output=<directory>    Specify the output directory.
@@ -25,4 +25,4 @@ if __name__ == '__main__':
         pipeline.scan(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
                       overwrite=argv['--overwrite'])
     else:
-        calls_asynchronously(argv, 'python -m negbio.negbio_ptb2ud ptb2ud')
+        calls_asynchronously(argv, 'python -m negbio.negbio_ptb2ud')

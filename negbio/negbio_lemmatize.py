@@ -2,7 +2,7 @@
 Determines the lemma
 
 Usage:
-    negbio_pipeline lemmatize [options] --output=<directory> <file> ...
+    negbio_lemmatize [options] --output=<directory> <file> ...
 
 Options:
     --output=<directory>    Specify the output directory.
