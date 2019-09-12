@@ -5,8 +5,8 @@ Usage:
     negbio_pipeline neg [options] --output=<directory> <file> ...
 
 Options:
-    --neg-patterns=<file>           Specify negation rules [default: negbio/patterns/neg_patterns.txt]
-    --uncertainty-patterns=<file>   Specify uncertainty rules [default: negbio/patterns/uncertainty_patterns.txt]
+    --neg-patterns=<file>           Specify negation rules [default: patterns/neg_patterns.txt]
+    --uncertainty-patterns=<file>   Specify uncertainty rules [default: patterns/uncertainty_patterns.txt]
     --suffix=<suffix>               Append an additional SUFFIX to file names. [default: .neg.xml]
     --verbose                       Print more information about progress.
     --output=<directory>            Specify the output directory.

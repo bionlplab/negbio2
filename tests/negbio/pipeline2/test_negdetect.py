@@ -8,11 +8,11 @@ from negbio.pipeline2.negdetect import NegBioNegDetector, is_neg_regex, _extend
 from negbio.pipeline2.ptb2ud import NegBioPtb2DepConverter
 from tests.negbio.utils import text_to_bioc
 
-__negbio_dir = Path(negbio.__file__).parent
+__project_dir = Path(negbio.__file__).parent.parent
 
-neg_pattern_file = __negbio_dir / 'patterns/neg_patterns.txt'
+neg_pattern_file = __project_dir / 'patterns/neg_patterns.txt'
 
-uncertainty_pattern_file = __negbio_dir / 'patterns/uncertainty_patterns.txt'
+uncertainty_pattern_file = __project_dir / 'patterns/uncertainty_patterns.txt'
 
 detector = NegBioNegDetector(Detector(
     neg_pattern_file=neg_pattern_file,

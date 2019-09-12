@@ -3,12 +3,16 @@ from pathlib import Path
 
 import bioc
 
+import negbio
 from negbio.pipeline2.dner_chexpert import ChexpertExtractor
 from tests.negbio.utils import get_example_dir
 
 
+__project_dir = Path(negbio.__file__).parent.parent
+
+
 def test_chexpert_extractor():
-    phrases_dir = Path(__file__).parent.parent.parent.parent / 'negbio/chexpert/phrases'
+    phrases_dir = __project_dir / 'patterns/phrases'
     extractor = ChexpertExtractor(phrases_dir / 'phrases.yml')
 
     dir = get_example_dir()
