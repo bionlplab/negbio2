@@ -20,14 +20,6 @@ from negbio.pipeline2.pipeline import NegBioPipeline
 
 if __name__ == '__main__':
     argv = parse_args(__doc__)
-
-    argv = get_absolute_path(argv,
-                             '--mention_phrases_dir',
-                             'negbio/chexpert/phrases/mention')
-    argv = get_absolute_path(argv,
-                             '--unmention_phrases_dir',
-                             'negbio/chexpert/phrases/unmention')
-
     extractor = ChexpertExtractor(Path(argv['--phrases_file']))
     pipeline = NegBioPipeline(pipeline=[('ChexpertExtractor', extractor)])
     pipeline.scan(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],

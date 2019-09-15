@@ -37,5 +37,7 @@ if __name__ == '__main__':
 
     splitter = SectionSplitter(pattern)
     pipeline = NegBioPipeline(pipeline=[('SectionSplitter', splitter)])
-    pipeline.scan(source=argv['<file>'], suffix=argv['--suffix'],
-                  directory=argv['--output'], overwrite=argv['--overwrite'])
+    pipeline.scan(source=argv['<file>'],
+                  suffix=argv['--suffix'],
+                  directory=argv['--output'],
+                  overwrite=argv['--overwrite'])

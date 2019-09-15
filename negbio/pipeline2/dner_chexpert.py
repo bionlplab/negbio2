@@ -84,7 +84,7 @@ class ChexpertExtractor(Pipe):
                 obs_phrases = self.observation2mention_phrases.items()
                 for observation, phrases in obs_phrases:
                     for phrase in phrases:
-                        matches = re.finditer(phrase, sentence.text)
+                        matches = re.finditer(phrase, sentence.text, re.I)
                         for match in matches:
                             start, end = match.span(0)
                             if self.overlaps_with_unmention(sentence, observation, start, end):
