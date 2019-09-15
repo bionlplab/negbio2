@@ -10,9 +10,5 @@ exclude_lines =
     if 0:
     if __name__ == .__main__.:
 
-[tool:pytest]
-addopts = --cov=negbio --cov-report html
-
-[run]
-omit =
-    negbio/pipeline2/*
+[html]
+directory = coverage_html_report

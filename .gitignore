@@ -4,6 +4,7 @@
 backup
 examples-local
 .DS_store
+coverage_html_report
 
 ### Python template
 # Byte-compiled / optimized / DLL files

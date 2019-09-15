@@ -13,3 +13,4 @@ JPype1==0.6.3
 numpy==1.16.4
 pytest-cov
 pyyaml==5.1
+pytest-cov==2.7.1
