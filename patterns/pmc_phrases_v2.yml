@@ -200,3 +200,12 @@ No Finding:
   - radiopaque
   - aerophagia
   - arthropathy
+Abscess:
+  include:
+  - abscess
+Sarcoidosis:
+  include:
+  - sarcoidosis
+Aneurysm:
+  include:
+  - aneurysm

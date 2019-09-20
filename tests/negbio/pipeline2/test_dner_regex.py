@@ -12,8 +12,8 @@ __project_dir = Path(negbio.__file__).parent.parent
 
 
 def test_chexpert_extractor():
-    phrases_dir = __project_dir / 'patterns/phrases'
-    extractor = RegExExtractor(phrases_dir / 'phrases.yml')
+    phrases_dir = __project_dir / 'patterns'
+    extractor = RegExExtractor(phrases_dir / 'chexpert_phrases.yml', 'CheXpert labeler')
 
     dir = get_example_dir()
     with open(dir / '1.chexpert.xml') as fp:

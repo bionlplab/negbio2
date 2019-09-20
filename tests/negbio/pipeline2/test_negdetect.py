@@ -10,7 +10,7 @@ from tests.negbio.utils import text_to_bioc
 
 __project_dir = Path(negbio.__file__).parent.parent
 
-neg_pattern_file = __project_dir / 'patterns/neg_patterns.yml'
+neg_pattern_file = __project_dir / 'patterns/neg_patterns2.yml'
 
 uncertainty_pattern_file = __project_dir / 'patterns/uncertainty_patterns.yml'
 

@@ -11,13 +11,14 @@ import re
 import bioc
 import yaml
 
-from negbio.chexpert.constants import CARDIOMEGALY, ENLARGED_CARDIOMEDIASTINUM, OBSERVATION
 from negbio.pipeline2.pipeline import Pipe
 
 
-class ChexpertExtractor(Pipe):
-    """Extract observations from impression sections of reports."""
+CARDIOMEGALY = "Cardiomegaly"
+ENLARGED_CARDIOMEDIASTINUM = "Enlarged Cardiomediastinum"
 
+
+class RegExExtractor(Pipe):
     def __init__(self, phrases_file, vocab_name):
         with open(phrases_file) as fp:
             phrases = yaml.load(fp, yaml.FullLoader)
@@ -38,9 +39,10 @@ class ChexpertExtractor(Pipe):
         self.add_unmention_phrases()
 
     def add_unmention_phrases(self):
-        cardiomegaly_mentions = self.observation2mention_phrases[CARDIOMEGALY]
-        enlarged_cardiom_mentions = self.observation2mention_phrases[ENLARGED_CARDIOMEDIASTINUM]
-        positional_phrases = (["over the", "overly the", "in the"],
+
+        cardiomegaly_mentions = self.observation2mention_phrases.get("Cardiomegaly", [])
+        enlarged_cardiom_mentions = self.observation2mention_phrases.get("Enlarged Cardiomediastinum", [])
+        positional_phrases = (["over the", "overly the", "in the", "assessment of", "diameter of"],
                               ["", " superior", " left", " right"])
         positional_unmentions = \
             [e1 + e2
@@ -93,8 +95,8 @@ class ChexpertExtractor(Pipe):
                             annotation = bioc.BioCAnnotation()
                             annotation.id = str(next(annotation_index))
                             annotation.infons['term'] = phrase
-                            annotation.infons[OBSERVATION] = observation
-                            annotation.infons['annotator'] = 'CheXpert labeler'
+                            annotation.infons["observation"] = observation
+                            annotation.infons['annotator'] = 'RegEx'
                             annotation.infons['vocab'] = self.vocab_name
                             annotation.add_location(bioc.BioCLocation(sentence.offset + start,
                                                                       end - start))

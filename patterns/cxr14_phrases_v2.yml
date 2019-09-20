@@ -2,6 +2,7 @@ Atelectasis:
   include:
   - atelecta
   - collapse
+  - volume loss
 Cardiomegaly:
   include:
   - cardiomegaly
@@ -25,10 +26,10 @@ Edema:
   - pulmonary congestion
   - indistinctness
   - vascular prominence
-Emphysema:  # not included in chexpert
+Emphysema:
   include:
   - emphysema
-Enlarged Cardiomediastinum:  # not included in cxr14
+Enlarged Cardiomediastinum:
   include:
   - ' mediastinum'
   - cardiomediastinum
@@ -37,16 +38,16 @@ Enlarged Cardiomediastinum:  # not included in cxr14
   - mediastinal silhouette
   - pericardial silhouette
   - cardiac silhouette and vascularity
-Fibrosis:  # not included in chexpert
+Fibrosis:
   include:
   - fibrosis
-Fracture:  # not included in cxr14
+Fracture:
   include:
   - fracture
-Hernia:  # not included in chexpert
+Hernia:
   include:
   - hernia
-Infiltration:  # In chexpert/Lung Opacity
+Infiltration:
   include:
   - infiltrate
   - infiltration
@@ -54,16 +55,18 @@ Pleural Effusion:
   include:
   - pleural fluid
   - effusion
+  - blunt
+  - thoracentesis
   exclude:
   - pericardial effusion
-Pleural Other:  # not included in cxr14
+Pleural Other:
   include:
   - fibrothorax
   - pleural scar
   - pleural parenchymal scar
   - pleuro-parenchymal scar
   - pleuro-pericardial scar
-Pleural Thickening:  # In chexpert/Pleural Other
+Pleural Thickening:
   include:
   - pleural thickening
 Pneumonia:
@@ -76,14 +79,14 @@ Pneumothorax:
   include:
   - pneumothorax
   - pneumothoraces
-Lung Lesion:  # not included in cxr14
+Lung Lesion:
   include:
   - lump
   - cavitary lesion
   - carcinoma
   - neoplasm
   - tumor
-Lung Opacity:  # not included in cxr14
+Lung Opacity:
   include:
   - opaci
   - decreased translucency
@@ -101,14 +104,15 @@ Lung Opacity:  # not included in cxr14
   - peribronchial thickening
   - wall thickening
   - scar
+  - hemorrhage
   exclude:
   - pleural scar
 Mass:
   include:
   - mass
+  - metastasis
   exclude:
   - massive
-  - massengale
 Nodule:
   include:
   - nodular density
@@ -119,7 +123,7 @@ Nodule:
   - nodule
   exclude:
   - calcified nodul
-Support Devices:  # not included in cxr14
+Support Devices:
   include:
   - pacer
   - ' line '
@@ -144,9 +148,15 @@ Support Devices:  # not included in cxr14
   - support
   - equipment
   - mediport
-No Finding:  # not included in cxr14
+  - tracheostomy
+Pneumoperitoneum:
   include:
-  - blunt
+  - pneumoperitoneum
+Pneumomediastinum:
+  include:
+  - pneumomediastinum
+No Finding:
+  include:
   - density
   - elevation
   - eventration
@@ -171,10 +181,7 @@ No Finding:  # not included in cxr14
   - contusion
   - atherosclero
   - osteopenia
-  - metastasis
   - granuloma
-  - pneumomediastinum
-  - pneumoperitoneum
   - osteodystrophy
   - cuffing
   - irregular lucency
@@ -187,13 +194,9 @@ No Finding:  # not included in cxr14
   - hyperexpansion
   - bullet
   - reticula
-  - thoracentesis
   - bronchitis
-  - volume loss
   - deformity
-  - hemorrhage
   - hematoma
   - radiopaque
   - aerophagia
   - arthropathy
-  - tracheostomy

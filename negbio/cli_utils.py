@@ -46,7 +46,9 @@ def calls_asynchronously(argv, cmd_prefix):
             cmd = cmd_prefix
             # extra args
             for k, v in argv.items():
-                if isinstance(v, bool):
+                if v is None:
+                    continue
+                elif isinstance(v, bool):
                     if v:
                         cmd += ' {}'.format(k)
                 else:

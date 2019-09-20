@@ -1,9 +1,15 @@
 - id: 0
-  pattern: no evidence of ([^ ]+ ){,3}\$X\$[\\w]*
-  comment: no evidence of X
+  pattern: unchanged ([^ ]+ ){0,3}\$X\$[\\w]*
+  comment: unchanged X
 - id: 1
-  pattern: resolved \$X\$[\\w]*
-  comment: resolved X
+  pattern: borderline size of the (cardiac )?silhouette
+  comment: overfitting to MIMIC-III CXR
+- id: 1
+  pattern: doubt ([^ ]+ ){0,3}\$X\$[\\w]*
+  comment: doubt XXX
 - id: 2
-  pattern: no evidence of .* \$X\$[\\w]*\.
-  comment: no evidence of X
+  pattern: \$X\$[\\w]* cannot be (entirely )?excluded
+  comment: cannot be excluded
+- id: 3
+  pattern: less likely ([^ ]+ ){0,3}\$X\$[\\w]*
+  comment: less likely X

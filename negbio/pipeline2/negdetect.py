@@ -96,9 +96,19 @@ class NegBioNegDetector(Pipe):
                                     'pattern': r'^(findings|impression): no '})
                         continue
                     for name, matcher, loc in self.detector.detect(sentence, sublocs):
-                        logging.debug('Find: %s, %s, %s', name, matcher.pattern, loc)
-                        _mark_anns(passage.annotations, loc[0], loc[1], name,
-                                   self.detector.total_patterns[matcher.pattern])
+                        if matcher is None:
+                            _mark_anns(passage.annotations, loc[0], loc[1], name,
+                                       {'id': 'neg regular expression',
+                                        'pattern': 'neg graph'})
+                        else:
+                            logging.debug('Find: %s, %s, %s', name, matcher.pattern, loc)
+                            if matcher.pattern not in self.detector.total_patterns:
+                                _mark_anns(passage.annotations, loc[0], loc[1], name,
+                                           {'id': 'missing patterns',
+                                            'pattern': str(matcher.pattern)})
+                            else:
+                                _mark_anns(passage.annotations, loc[0], loc[1], name,
+                                           self.detector.total_patterns[matcher.pattern])
 
             # _extend(document, Detector.NEGATION)
             # _extend(document, Detector.UNCERTAINTY)

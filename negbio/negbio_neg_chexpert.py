@@ -10,7 +10,7 @@ Options:
                                                 [default: patterns/chexpert_pre_negation_uncertainty.yml]
     --post-negation-uncertainty-patterns=FILE   Post negation uncertainty rules
                                                 [default: patterns/chexpert_post_negation_uncertainty.yml]
-    --suffix=<suffix>                           Append an additional SUFFIX to file names. [default: .neg.xml]
+    --suffix=<suffix>                           Append an additional SUFFIX to file names. [default: .chexpert-neg.xml]
     --verbose                                   Print more information about progress.
     --output=<directory>                        Specify the output directory.
     --workers=<n>                               Number of threads [default: 1]
@@ -18,7 +18,7 @@ Options:
     --overwrite                                 Overwrite the output file.
 """
 
-from negbio.chexpert.stages.classify import ModifiedDetector
+from negbio.ext.chexpert_classify import CheXpertDetector
 from negbio.cli_utils import parse_args, get_absolute_path, calls_asynchronously
 from negbio.pipeline2.negdetect import NegBioNegDetector
 from negbio.pipeline2.pipeline import NegBioPipeline
@@ -37,7 +37,7 @@ if __name__ == '__main__':
                                  '--neg-patterns',
                                  'negbio/chexpert/patterns/negation.txt')
 
-        neg_detector = NegBioNegDetector(ModifiedDetector(
+        neg_detector = NegBioNegDetector(CheXpertDetector(
             argv['--pre-negation-uncertainty-patterns'],
             argv['--neg-patterns'],
             argv['--post-negation-uncertainty-patterns']))

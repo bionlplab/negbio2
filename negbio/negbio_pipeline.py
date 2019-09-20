@@ -43,10 +43,12 @@ def main():
         exit(call(['python', '-m', 'negbio.negbio_ptb2ud'] + argv))
     elif args['<command>'] == 'dner_mm':
         exit(call(['python', '-m', 'negbio.negbio_dner_matamap'] + argv))
-    elif args['<command>'] == 'dner_chexpert':
-        exit(call(['python', '-m', 'negbio.negbio_dner_chexpert'] + argv))
+    elif args['<command>'] == 'dner_regex':
+        exit(call(['python', '-m', 'negbio.negbio_dner_regex'] + argv))
     elif args['<command>'] == 'neg':
         exit(call(['python', '-m', 'negbio.negbio_neg'] + argv))
+    elif args['<command>'] == 'neg2':
+        exit(call(['python', '-m', 'negbio.negbio_neg2'] + argv))
     elif args['<command>'] == 'neg_chexpert':
         exit(call(['python', '-m', 'negbio.negbio_neg_chexpert'] + argv))
     elif args['<command>'] == 'cleanup':

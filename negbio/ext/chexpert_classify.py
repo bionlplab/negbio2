@@ -6,11 +6,15 @@ Modified by: Yifan Peng
 import logging
 
 from negbio import ngrex
-from negbio.chexpert.constants import *
 from negbio.neg import semgraph, propagator, neg_detector
 
 
-class ModifiedDetector(neg_detector.Detector):
+UNCERTAINTY = "uncertainty"
+NEGATION = "negation"
+REPORTS = "Reports"
+
+
+class CheXpertDetector(neg_detector.Detector):
     """Child class of NegBio Detector class.
 
     Overrides parent methods __init__, detect, and match_uncertainty.
@@ -18,7 +22,7 @@ class ModifiedDetector(neg_detector.Detector):
 
     def __init__(self, pre_negation_uncertainty_path,
                  negation_path, post_negation_uncertainty_path):
-        super(ModifiedDetector, self).__init__(negation_path, post_negation_uncertainty_path)
+        super(CheXpertDetector, self).__init__(negation_path, post_negation_uncertainty_path)
         pupatterns = ngrex.load_yml(pre_negation_uncertainty_path)
         self.preneg_uncertain_patterns = [p['patternobj'] for p in pupatterns]
         self.total_patterns.update({p['patternobj']: p for p in pupatterns})
