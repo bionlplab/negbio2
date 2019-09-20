@@ -18,10 +18,11 @@ from negbio.pipeline2.pipeline import Pipe
 class ChexpertExtractor(Pipe):
     """Extract observations from impression sections of reports."""
 
-    def __init__(self, phrases_file):
+    def __init__(self, phrases_file, vocab_name):
         with open(phrases_file) as fp:
             phrases = yaml.load(fp, yaml.FullLoader)
 
+        self.vocab_name = vocab_name
         self.observation2mention_phrases = {}
         self.observation2unmention_phrases = {}
         for observation, v in phrases.items():
@@ -94,6 +95,7 @@ class ChexpertExtractor(Pipe):
                             annotation.infons['term'] = phrase
                             annotation.infons[OBSERVATION] = observation
                             annotation.infons['annotator'] = 'CheXpert labeler'
+                            annotation.infons['vocab'] = self.vocab_name
                             annotation.add_location(bioc.BioCLocation(sentence.offset + start,
                                                                       end - start))
                             annotation.text = sentence.text[start:end]

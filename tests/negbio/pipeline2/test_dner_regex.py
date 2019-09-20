@@ -4,7 +4,7 @@ from pathlib import Path
 import bioc
 
 import negbio
-from negbio.pipeline2.dner_chexpert import ChexpertExtractor
+from negbio.pipeline2.dner_regex import RegExExtractor
 from tests.negbio.utils import get_example_dir
 
 
@@ -13,7 +13,7 @@ __project_dir = Path(negbio.__file__).parent.parent
 
 def test_chexpert_extractor():
     phrases_dir = __project_dir / 'patterns/phrases'
-    extractor = ChexpertExtractor(phrases_dir / 'phrases.yml')
+    extractor = RegExExtractor(phrases_dir / 'phrases.yml')
 
     dir = get_example_dir()
     with open(dir / '1.chexpert.xml') as fp:

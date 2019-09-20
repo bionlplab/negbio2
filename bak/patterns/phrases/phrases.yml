@@ -77,6 +77,9 @@ Lung Opacity:
   - scar
   exclude:
   - pleural scar
+  - nodular opacity
+  - nodular opacities
+  - nodular opacification
 Pleural Effusion:
   include:
   - pleural fluid
@@ -96,7 +99,7 @@ Pneumonia:
   include:
   - pneumonia
   - infection
-  - infectious process
+#  - infectious process
   - infectious
 Pneumothorax:
   include:
