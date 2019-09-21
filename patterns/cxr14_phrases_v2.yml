@@ -126,20 +126,19 @@ Nodule:
 Support Devices:
   include:
   - pacer
-  - ' line '
-  - lines
+  - '\blines?\b'
   - picc
-  - tube
+  - '\btubes?\b'
   - valve
   - catheter
   - pacemaker
   - hardware
   - arthroplast
   - marker
-  - icd
+  - '\bicd?\b'
   - defib
   - device
-  - 'drain '
+  - '\bdrain?\b'
   - plate
   - screw
   - cannula
