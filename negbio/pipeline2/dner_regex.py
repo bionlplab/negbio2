@@ -64,13 +64,17 @@ class RegExExtractor(Pipe):
         self.observation2unmention_phrases[ENLARGED_CARDIOMEDIASTINUM] = \
             enlarged_cardiomediastinum_unmentions
 
+    def compile_pattern(self, pattern):
+        pattern = re.sub(' ', r'\s+', pattern)
+        return re.compile(pattern, re.I|re.M)
+
     def overlaps_with_unmention(self, sentence, observation, start, end):
         """Return True if a given match overlaps with an unmention phrase."""
         unmention_overlap = False
         unmention_list = self.observation2unmention_phrases.get(observation, [])
         for unmention in unmention_list:
-            unmention_matches = re.finditer(unmention, sentence.text)
-            for unmention_match in unmention_matches:
+            unmention_pattern = self.compile_pattern(unmention)
+            for unmention_match in unmention_pattern.finditer(sentence.text):
                 unmention_start, unmention_end = unmention_match.span(0)
                 if start < unmention_end and end > unmention_start:
                     unmention_overlap = True
@@ -87,8 +91,8 @@ class RegExExtractor(Pipe):
                 obs_phrases = self.observation2mention_phrases.items()
                 for observation, phrases in obs_phrases:
                     for phrase in phrases:
-                        matches = re.finditer(phrase, sentence.text, re.I)
-                        for match in matches:
+                        pattern = self.compile_pattern(phrase)
+                        for match in pattern.finditer(sentence.text):
                             start, end = match.span(0)
                             if self.overlaps_with_unmention(sentence, observation, start, end):
                                 continue
