@@ -39,21 +39,21 @@ right picc with tip within the upper svc.</text>
       <annotation id="0">
         <infon key="term">picc</infon>
         <infon key="observation">Support Devices</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <location length="4" offset="36"/>
         <text>picc</text>
       </annotation>
       <annotation id="1">
         <infon key="term">cardiomegaly</infon>
         <infon key="observation">Cardiomegaly</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <location length="12" offset="128"/>
         <text>cardiomegaly</text>
       </annotation>
       <annotation id="2">
         <infon key="term">infiltrate</infon>
         <infon key="observation">Lung Opacity</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <infon key="negation">True</infon>
         <location length="10" offset="163"/>
         <text>infiltrate</text>
@@ -61,7 +61,7 @@ right picc with tip within the upper svc.</text>
       <annotation id="3">
         <infon key="term">effusion</infon>
         <infon key="observation">Pleural Effusion</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <infon key="negation">True</infon>
         <location length="8" offset="175"/>
         <text>effusion</text>
@@ -69,7 +69,7 @@ right picc with tip within the upper svc.</text>
       <annotation id="4">
         <infon key="term">pneumothorax</infon>
         <infon key="observation">Pneumothorax</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <infon key="negation">True</infon>
         <location length="12" offset="187"/>
         <text>pneumothorax</text>
@@ -115,14 +115,14 @@ impression: stable chest.</text>
       <annotation id="0">
         <infon key="term"> mediastinum</infon>
         <infon key="observation">Enlarged Cardiomediastinum</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <location length="12" offset="48"/>
         <text> mediastinum</text>
       </annotation>
       <annotation id="1">
         <infon key="term">pneumothorax</infon>
         <infon key="observation">Pneumothorax</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <infon key="negation">True</infon>
         <location length="12" offset="125"/>
         <text>pneumothorax</text>
@@ -130,7 +130,7 @@ impression: stable chest.</text>
       <annotation id="2">
         <infon key="term">scoliosis</infon>
         <infon key="observation">No Finding</infon>
-        <infon key="annotator">CheXpert labeler</infon>
+        <infon key="annotator">RegEx</infon>
         <location length="9" offset="168"/>
         <text>scoliosis</text>
       </annotation>
