@@ -50,7 +50,7 @@
   pattern: '{} >{} {lemma:/left/} <{} {lemma:/question/}'
   comment: question left XXX
 - id: 17
-  pattern: '{} <{dependency:/dobj/} ({lemma:/exclude/} >{} {lemma:/cannot/})'
+  pattern: '{} <{dependency:/dobj/} ({lemma:/exclude|evaluate|detect|identify/} >{} {lemma:/cannot/})'
   comment: cannot exclude XXX
 - id: 18
   pattern: '{} <{dependency:/nmod:out/} ({lemma:/rule/} >{} {lemma:/cannot/})'
@@ -59,8 +59,8 @@
   pattern: '{} <{dependency:/nsubjpass/} ({lemma:/exclude/} >{dependency:/neg/} {})'
   comment: XXX is not excluded
 - id: 20
-  pattern: '{} <{dependency:/nsubjpass/} ({lemma:/exclude/} >{} {lemma:/cannot/})'
-  comment: XXX is not excluded
+  pattern: '{} <{dependency:/nsubjpass/} ({lemma:/exclude|favor/} >{} {lemma:/cannot/})'
+  comment: XXX is not excluded|favored
 - id: 21
   pattern: '{} <{dependency:/dobj/} ({lemma:/include/} >{} ({lemma:/diagnosis/} >{}
     {lemma:/differential/}))'
@@ -71,3 +71,6 @@
 - id: 23
   pattern: '{} <{dependency:/nsubj/} {lemma:/suspect/,tag:/VBN/}'
   comment: XXX suspected
+- id: 24
+  pattern: '{} <{dependency:/nmod:of/} ({lemma:/finding/} >{} {lemma:/equivocal/})'
+  comment: Equivocal finding of xxx
