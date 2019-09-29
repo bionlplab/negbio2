@@ -1,10 +1,9 @@
-![NegBio](https://github.com/yfpeng/negbio/blob/master/images/negbio.png?raw=true)
+![NegBio](https://github.com/yfpeng/negbio2/blob/master/images/negbio.png?raw=true)
 
 -----------------------
 
 [![Build status](https://github.com/yfpeng/negbio2/workflows/negbio2/badge.svg)](https://github.com/yfpeng/negbio2)
-
-[![RTD version](https://img.shields.io/readthedocs/negbio.svg)](http://negbio.readthedocs.io)
+[![RTD version](https://img.shields.io/readthedocs/negbio2.svg)](http://negbio2.readthedocs.io)
 
 
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
@@ -17,22 +16,22 @@ We are updating the NegBio's pipeline. To use the order version, please see [v0.
 
 # Get started
 
-## Download NegBio
+1. Download NegBio
 
 ```bash
 git clone https://github.com/ncbi-nlp/NegBio.git
 cd /path/to/negbio
 ```
 
-## Prepare the dataset
+2. Prepare the dataset
 
 The inputs can be in either plain text or [BioC](http://bioc.sourceforge.net/) format.
 If the reports are in plain text, each report needs to be in a single file.
 Some examples can be found in the ``examples`` folder.
 
-## Run the script
+3. Run the script
 
-See [User guide](https://negbio.readthedocs.io/en/latest/user_guide.html).
+See [User guide](https://negbio2.readthedocs.io/en/latest/user_guide.html).
 
 
 # Documentation
@@ -41,7 +40,7 @@ Documentation is available from http://negbio.readthedocs.io
 
 # Contributing
 
-Refer to our [contribution guide](https://negbio.readthedocs.io/en/latest/contributing.html).
+Refer to our [contribution guide](https://negbio2.readthedocs.io/en/latest/contributing.html).
 
 
 # Citing NegBio
