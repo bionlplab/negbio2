@@ -2,6 +2,7 @@
 
 .pytest_cache/
 backup
+negbio_env
 examples-local
 .DS_store
 coverage_html_report

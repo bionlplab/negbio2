@@ -1,6 +1,8 @@
-# NegBio User Guide
+# Advanced Usage
 
-### Run the pipeline step-by-step
+This document covers some of NegBio more advanced features.
+
+### Running the pipeline step-by-step
 
 The step-by-step pipeline generates all intermediate documents. You can easily rerun one step if it makes errors. The whole steps are
 
@@ -92,7 +94,7 @@ Therefore, it is better to specify the UMLS concepts of interest via `--cuis=<fi
    $ negbio_pipeline dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 ```
 
-### Using vocabularies
+#### Using vocabularies
 
 NegBio also integrates the CheXpert's method to use vocabularies to recognize the presence of 14 observations.
 All vocabularies can be found at `patterns`.
@@ -101,7 +103,7 @@ Each file in the folder represents one type of named entities with various text 
 
 ### Parse the sentence
 
-This step parses sentence using the `Bllip parser <https://github.com/BLLIP/bllip-parser>`_.
+This step parses sentence using the [Bllip parser](https://github.com/BLLIP/bllip-parser).
 
 ### Convert the parse tree to UD
 

@@ -1,63 +1,66 @@
-# Getting Started with NegBio
+# Quickstart
 
-These instructions will get you a copy of the project up and run on your local machine for development and testing purposes. The package should successfully install on Linux (and possibly macOS).
+Eager to get started? This page gives a good introduction in how to get started with NegBio.
 
-## Installing
+First, make sure that NegBio is installed.
 
-### Prerequisites
 
-*  python >3.6
-*  Linux
-*  Java
-
-Note: since v1.0, MetaMap is not required. You can use the vocabularies (e.g., ``patterns/cxr14_phrases_v2.yml``) instead.
-
-If you want to use MetaMap, it can be downloaded from [https://metamap.nlm.nih.gov/MainDownload.shtml](https://metamap.nlm.nih.gov/MainDownload.shtml).
-Installation instructions can be found at [https://metamap.nlm.nih.gov/Installation.shtml](https://metamap.nlm.nih.gov/Installation.shtml).
-Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started.
-
-### Setup NegBio
-
-1. Download NegBio
-    ```bash
-    git clone https://github.com/ncbi-nlp/NegBio.git
-    cd /path/to/negbio
-    ```
-2. Prepare virtual environment
-    ```bash
-    conda create --name negbio python=3.6
-    source activate negbio
-    ```
-    or
-    ```bash
-    python3 -m venv negbio
-    source negbio/bin/activate
-    ```
-
-3. Install required packages
-    ```bash
-    pip install --upgrade pip setuptools
-    pip install -r requirements3.txt
-    ```
-
-## Using NegBio
-
-1. Prepare the dataset
+## Preparing the dataset
     
-   The inputs can be in either plain text or [BioC](http://bioc.sourceforge.net/>) format. If the reports are in plain text, each report needs to be in a single file. Some examples can be found in the ``examples`` folder.
+The inputs of NegBio should be in the [BioC](http://bioc.sourceforge.net/>) format. 
 
-2. Run the pipeline
+Briefly, a BioC-format file is an XML document as the basis of the BioC data exchange and the BioC data classes. Each file contains a group of documents. Each document should have a unique id and one or more passages. Each passage should have (1) a non-overlapping offset that specifies the location of the passage with respect to the whole document, and (2) the original text of the passage. 
 
-    ```bash
-    export OUTPUT_DIR=/path/to/output_dir
-    export OUTPUT_LABELS=/path/to/labels
-    export INPUT_FILES=/path/to/input_files
-    python negbio/negbio_pipeline.py section_split --pattern patterns/section_titles_cxr8.txt --output $OUTPUT_DIR/sections $OUTPUT_DIR/report/* --workers=6
-    python negbio/negbio_pipeline.py ssplit --output $OUTPUT_DIR/ssplit $OUTPUT_DIR/sections/* --workers=6
-    python negbio/negbio_pipeline.py parse --output $OUTPUT_DIR/parse $OUTPUT_DIR/ssplit/* --workers=6
-    python negbio/negbio_pipeline.py ptb2ud --output $OUTPUT_DIR/ud $OUTPUT_DIR/parse/* --workers=4
-    python negbio/negbio_pipeline.py dner_regex --phrases_file patterns/chexpert_phrases.yml --output $OUTPUT_DIR/dner $OUTPUT_DIR/ud/* --suffix=.chexpert-regex.xml --workers=6
-    python negbio/negbio_pipeline.py neg2 --output $OUTPUT_DIR/neg $OUTPUT_DIR/dner/* --workers=6
-    python negbio/ext/chexpert_collect_labels.py --phrases_file patterns/chexpert_phrases.yml --output $OUTPUT_LABELS $OUTPUT_DIR/neg/*
-    ```
+The text can contains special characters such as newlines.
+   
+```xml
+<?xml version='1.0' encoding='utf-8' standalone='yes'?>
+<collection>
+  <source>ChestXray-NIHCC</source>
+  <date>2017-05-31</date>
+  <key></key>
+  <document>
+    <id>0001</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings:
+chest: four images:
+right picc with tip within the upper svc.
+probable enlargement of the main pulmonary artery.
+mild cardiomegaly.
+no evidence of focal infiltrate, effusion or pneumothorax.
+dictating </text>
+    </passage>
+  </document>
+  <document>
+    <id>0002</id>
+    <passage>
+      <offset>0</offset>
+      <text>findings: pa and lat cxr at 7:34 p.m.. heart and mediastinum are
+stable. lungs are unchanged. air- filled cystic changes. no
+pneumothorax. osseous structures unchanged scoliosis
+impression: stable chest.
+dictating </text>
+    </passage>
+  </document>
+</collection>
+```
 
+## Running NegBio
+
+```bash
+$ export OUTPUT_DIR=examples-local
+$ export OUTPUT_LABELS=examples-local/labels.csv
+$ export INPUT_FILES="examples/1.xml examples/2.xml"
+$ bash examples/run_negbio_examples.sh
+```
+
+You can also include all reports in one folder, so that the `$INPUT_FILES=examples/*.xml`
+
+After the script is finished, you can find the labels at `examples-local/labels.csv`. It contains three rows with respect to three documents. Each row has multiple findings, such as Atelectasis and Cardiomegaly. The definition of findings can be found at `patterns/cxr14_phrases_v2.yml`. In this file, 1 means positive findings, 0 means negative findings, and -1 means uncertain findings.
+
+Besides the final label file, there are 6 folders that contain the intermediate files of each step, respectively. For example, the `ssplit` folder consists of sentences, and the `parse` folder consists of parse tree of each sentence. The content and format of these files should be self-explained.
+
+-----
+
+Ready for more? Check out the `User Guide` section.
