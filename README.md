@@ -19,8 +19,8 @@ We are updating the NegBio's pipeline. To use the order version, please see [v0.
 1. Download NegBio
 
     ```bash
-    git clone https://github.com/ncbi-nlp/NegBio.git
-    cd /path/to/negbio
+    $ git clone https://github.com/yfpeng/negbio2.git
+    $ cd /path/to/negbio2
     ```
 
 2. Prepare the dataset. 
@@ -31,7 +31,7 @@ We are updating the NegBio's pipeline. To use the order version, please see [v0.
 
 ## Documentation
 
-Documentation is available from http://negbio.readthedocs.io
+Documentation is available from http://negbio2.readthedocs.io
 
 ## Contributing
 
