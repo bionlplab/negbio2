@@ -8,7 +8,7 @@ The step-by-step pipeline generates all intermediate documents. You can easily r
 
 1. `text2bioc` combines text into a BioC XML file.
 2. `normalize` removes noisy text such as `[**Patterns**]`.
-3. `section_split` splits the report into sections based on titles at `patterns/section_titles.txt`
+3. `section_split` splits the report into sections
 4. `ssplit` splits text into sentences.
 5. Named entity recognition
    1. `dner_mm` detects UMLS concepts using MetaMap.
@@ -18,18 +18,18 @@ The step-by-step pipeline generates all intermediate documents. You can easily r
 8. `neg2` detects negative and uncertain findings.
 9. `cleanup` removes intermediate information.
 
-Steps 2-10 will process the input files one-by-one and generate the results in the output directory.
-The 2nd and 3rd can be skipped. You can chose either step 5 or 6 for named entity recognition.
+<!--Steps 2-10 will process the input files one-by-one and generate the results in the output directory.-->
+<!--The 2nd and 3rd can be skipped. You can chose either step 5 or 6 for named entity recognition.-->
 
 ### General arguments
 
 The general command is 
 
 ```bash
-python negbio/negbio_pipeline.py [step] [options] --output=/path/to/output/dir /path/to/inputs
+python negbio/negbio_pipeline.py <command> [options] --output=/path/to/output/dir /path/to/inputs
 ```
 
-The `step` must be one of the steps above. The `--output` specifies the output directory. The `inputs` can be one or multiple files.
+The `<command>` must be one of the steps above. The `--output` specifies the output directory. The `inputs` can be one or multiple files.
 
 Other options include
 
@@ -90,15 +90,15 @@ Many of them are not irrelevant to radiology.
 Therefore, it is better to specify the UMLS concepts of interest via `--cuis=<file>`
 
 ```bash
-   $ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
-   $ negbio_pipeline dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
+$ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
+$ negbio_pipeline dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 ```
 
 #### Using vocabularies
 
 NegBio also integrates the CheXpert's method to use vocabularies to recognize the presence of 14 observations.
 All vocabularies can be found at `patterns`.
-Each file in the folder represents one type of named entities with various text expressions. You are also free to create patterns via `--phrases_file=<file>`.
+Each file in the folder represents one type of named entities with various text expressions. You can specify customized patterns via `--phrases_file=<file>`.
 
 
 ### Parse the sentence
@@ -113,7 +113,7 @@ This step converts the parse tree to universal dependencies using [Stanford conv
 
 This step detects negative and uncertain findings using patterns.
 By default, the program uses the negation and uncertainty patterns in the `patterns` folder.
-However, you are free to create your own patterns such as  `--neg-patterns=<file>`.
+However, You can specify customized patterns such as  `--neg-patterns=<file>`.
 
 #### Patterns on the dependency graph
 
@@ -126,13 +126,13 @@ Each phase consists of rules which are matched against the mention; if a match i
 accordingly (as uncertain in the first or third phase, and as negative in the second phase).
 If a mention is not matched in any of the phases, it is classified as positive.
 
-You are free to create patterns via `--neg-patterns=<file>`, `--pre-uncertainty-patterns=<file>`, and `--post-uncertainty-patterns=<file>`. Each file is an yaml-format file that consists of a list of patterns. Each pattern should have an `id` field and a `pattern` field. This allows NegBio to associate each pattern with the detected negation/uncertainty, to maximum the transparency. Examples can be found at `patterns`.
+You can specify customized patterns via `--neg-patterns=<file>`, `--pre-uncertainty-patterns=<file>`, and `--post-uncertainty-patterns=<file>`. Each file is an yaml-format file that consists of a list of patterns. Each pattern must have an `id` field and a `pattern` field. This allows NegBio to associate each pattern with the detected negation/uncertainty, to maximum the transparency. Examples can be found at `patterns`.
 
 #### Regular expression patterns
 
 NegBio also allows to use the regular expression to match simple cases. This function can also speed up the detection process, because pattern matching on the dependency graph is relatively slower. NegBio will first use regular expressions to match the text. If not found, semgrex is then used.
 
-You are free to create patterns via `--neg-regex-patterns=<file>` and `--uncertainty-regex-patterns=<file>`. Each file is an yaml-format file that consists of a list of patterns. Each pattern should have an `id` field and an `pattern` field. Examples can be found in `patterns`.
+You can specify customized patterns via `--neg-regex-patterns=<file>` and `--uncertainty-regex-patterns=<file>`. Each file is an yaml-format file that consists of a list of patterns. Each pattern must have an `id` field and an `pattern` field. Examples can be found in `patterns`.
 
 ### Cleans intermediate information
 

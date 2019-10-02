@@ -16,8 +16,8 @@ Options:
     --output=<directory>            Specify the output directory.
     --verbose                       Print more information about progress.
     --overwrite                     Overwrite the output file.
-    --workers=<n>                               Number of threads [default: 1]
-    --files_per_worker=<n>                      Number of input files per worker [default: 8]
+    --workers=<n>                   Number of threads [default: 1]
+    --files_per_worker=<n>          Number of input files per worker [default: 8]
 """
 from negbio.pipeline2.pipeline import NegBioPipeline
 from negbio.pipeline2.ssplit import NegBioSSplitter

@@ -4,7 +4,7 @@ This part of the documentation covers the installation of NegBio. The first step
 
 ## Prerequisites
 
-*  python >3.6
+*  python >=3.6
 *  Linux
 *  Java
 

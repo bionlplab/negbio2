@@ -59,8 +59,8 @@ You can also include all reports in one folder, so that the `$INPUT_FILES=exampl
 
 After the script is finished, you can find the labels at `examples-local/labels.csv`. It contains three rows with respect to three documents. Each row has multiple findings, such as Atelectasis and Cardiomegaly. The definition of findings can be found at `patterns/cxr14_phrases_v2.yml`. In this file, 1 means positive findings, 0 means negative findings, and -1 means uncertain findings.
 
-Besides the final label file, there are 6 folders that contain the intermediate files of each step, respectively. For example, the `ssplit` folder consists of sentences, and the `parse` folder consists of parse tree of each sentence. The content and format of these files should be self-explained.
+Besides the final label file, 6 folders contain the intermediate files of each step, respectively. For example, the `ssplit` folder consists of sentences, and the `parse` folder consists of the parse tree of each sentence. The content and format of these files should be self-explained.
 
 -----
 
-Ready for more? Check out the `User Guide` section.
+Ready for more? Check out the `Advanced Usage` section.
