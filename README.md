@@ -4,7 +4,7 @@
 
 [![Build status](https://github.com/yfpeng/negbio2/workflows/negbio2/badge.svg)](https://github.com/yfpeng/negbio2)
 [![RTD version](https://img.shields.io/readthedocs/negbio2.svg)](http://negbio2.readthedocs.io)
-
+[![HitCount](https://hits.dwyl.com/yfpeng/negbio2.svg)](https://hits.dwyl.com/yfpeng/negbio2)
 
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
