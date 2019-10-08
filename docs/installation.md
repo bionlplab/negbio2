@@ -10,9 +10,26 @@ This part of the documentation covers the installation of NegBio. The first step
 
 Note: since v1.0, MetaMap is not required. You can use the vocabularies (e.g., ``patterns/cxr14_phrases_v2.yml``) instead.
 
-If you want to use MetaMap, it can be downloaded from [https://metamap.nlm.nih.gov/MainDownload.shtml](https://metamap.nlm.nih.gov/MainDownload.shtml).
-Installation instructions can be found at [https://metamap.nlm.nih.gov/Installation.shtml](https://metamap.nlm.nih.gov/Installation.shtml).
-Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started.
+
+## Installation of MetaMap
+
+**If you want to use MetaMap to extract findings!!!**
+
+1. Download [MetaMap full version ](https://metamap.nlm.nih.gov/MainDownload.shtml) and extract inot the directory called `public_mm`.
+
+2. Install MetaMap locally. Installation instructions can be found at [https://metamap.nlm.nih.gov/Installation.shtml](https://metamap.nlm.nih.gov/Installation.shtml).
+
+    ```bash
+    cd public_mm
+    ./bin/install.sh
+    ```
+
+3. Start the server.
+
+    ```bash
+    ./bin/skrmedpostctl start
+    ./bin/wsdserverctl start
+    ```
 
 ## Getting the source code
 

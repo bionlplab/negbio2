@@ -5,7 +5,7 @@ import re
 
 import bioc
 
-from pipeline2.pipeline import Pipe
+from negbio.pipeline2.pipeline import Pipe
 
 
 def remove_newline(s):

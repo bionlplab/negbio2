@@ -29,6 +29,8 @@ Edema:
 Emphysema:
   include:
   - emphysema
+  exclude:
+  - subcutaneous emphysema
 Enlarged Cardiomediastinum:
   include:
   - ' mediastinum'
@@ -75,6 +77,8 @@ Pneumonia:
   - infection
   - infectious process
   - infectious
+  exclude:
+  - aspiration pneumonia
 Pneumothorax:
   include:
   - pneumothorax
@@ -104,7 +108,6 @@ Lung Opacity:
   - peribronchial thickening
   - wall thickening
   - scar
-  - hemorrhage
   exclude:
   - pleural scar
 Mass:
@@ -154,6 +157,15 @@ Pneumoperitoneum:
 Pneumomediastinum:
   include:
   - pneumomediastinum
+Subcutaneous Emphysema:
+  include:
+  - subcutaneous emphysema
+Tortuous Aorta:
+  include:
+  - tortuous aorta
+Calcification of the Aorta:
+  include:
+  - calcification of the aorta
 No Finding:
   include:
   - density
@@ -199,3 +211,9 @@ No Finding:
   - radiopaque
   - aerophagia
   - arthropathy
+Diagnosis:
+  - aspiration pneumonia
+  - fluid overload
+  - hemorrhage
+  - hemothorax
+  - pericardial effusion

@@ -79,18 +79,14 @@ MetaMap is also slower and easier to break than vocabulary.
 
 #### Using MetaMap
 
-The first version of NegBio uses MetaMap to detect UMLS concepts.
-
-MetaMap can be can be downloaded from [https://metamap.nlm.nih.gov/MainDownload.shtml](https://metamap.nlm.nih.gov/MainDownload.shtml).
-Installation instructions can be found at [https://metamap.nlm.nih.gov/Installation.shtml](https://metamap.nlm.nih.gov/Installation.shtml).
-Before using MetaMap, please make sure that both `skrmedpostctl` and `wsdserverctl` are started.
+The first version of NegBio uses MetaMap to detect UMLS concepts. Please make sure that both ``skrmedpostctl`` and ``wsdserverctl`` are started
 
 MetaMap intends to extract all UMLS concepts.
 Many of them are not irrelevant to radiology.
 Therefore, it is better to specify the UMLS concepts of interest via `--cuis=<file>`
 
 ```bash
-$ export METAMAP_BIN=META_MAP_HOME/bin/metamap16
+$ export METAMAP_BIN=METAMAP_HOME/bin/metamap16
 $ negbio_pipeline dner_mm --metamap=$METAMAP_BIN --output=$OUTPUT_DIR $INPUT_DIR/*.xml
 ```
 
