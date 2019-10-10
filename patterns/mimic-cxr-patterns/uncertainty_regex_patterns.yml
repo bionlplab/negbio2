@@ -1,6 +1,6 @@
-#- id: 0
-#  pattern: unchanged ([^ ]+ ){0,3}\$X\$
-#  comment: unchanged XXX
+- id: 0
+  pattern: unchanged ([^ ]+ ){0,3}\$X\$
+  comment: unchanged XXX
 - id: 1
   pattern: borderline size of the (cardiac )?silhouette
   comment: overfitting to MIMIC-III CXR
@@ -22,6 +22,3 @@
 - id: 7
   pattern: \$X\$[\w]* if any
   comment: XXX if any
-- id: 9
-  pattern: may be related to ([^ ]+ ){0,3}\$X\$
-  comment: may be related to

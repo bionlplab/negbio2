@@ -83,7 +83,7 @@
   pattern: '{} > {} {lemma:/may|might|would|could/}'
   comment: May/might/would/could be XXX
 - id: 25
-  pattern: '{} <{dependency:/nmod:of/} {lemma:/question|suggestion|suggestive/}'
+  pattern: '{} <{dependency:/nmod:of/} {lemma:/question|suggestion/}'
   comment: suggestion of
 - id: 26
   pattern: '{} <{dependency:/dobj/} {lemma:/suspect|favor|question|consider|suggest|suggesting/}'
@@ -118,10 +118,10 @@
   pattern: '{} <{dependency:/nmod:to/} {lemma:/secondary/}'
   comment: maybe secondary to XXX
 - id: 36
-  pattern: '{} <{dependency:/nmod:to/} ({lemma:/due/} >{} {lemma:/can|could|may|would|possibly|likely/})'
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/due/} >{} {lemma:/can|could|may|would|possibly/})'
   comment: may be due to XXX
 - id: 37
-  pattern: '{} <{dependency:/nmod:to/} ({lemma:/relate/} >{} {lemma:/can|could|may|would|possibly|likely/})'
+  pattern: '{} <{dependency:/nmod:to/} ({lemma:/relate/} >{} {lemma:/can|could|may|would|possibly/})'
   comment: could related to XXX
 - id: 38
   pattern: '{} <{dependency:/nmod:with/} ({lemma:/compatible/} >{} {lemma:/be|could|may|would/})'

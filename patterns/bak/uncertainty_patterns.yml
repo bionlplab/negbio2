@@ -9,7 +9,7 @@
   comment: incoming edge
 - id: 3
   pattern: '{} <{dependency:/dobj/} {lemma:/suspect|favor|suggest|suggesting|question|consider/}'
-  comment: incoming edge
+  comment: suggest XXX
 - id: 4
   pattern: '{} <{dependency:/nmod:for/} {lemma:/concern|suspicion/}'
   comment: incoming edge

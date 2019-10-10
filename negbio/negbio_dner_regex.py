@@ -8,10 +8,10 @@ Options:
     --suffix=<suffix>       Append an additional SUFFIX to file names. [default: .regex.xml]
     --output=<directory>    Specify the output directory.
     --verbose               Print more information about progress.
-    --phrases_file=<file>   File containing phrases for each observation. [default: patterns/cxr14_phrases_v2.yml]
+    --phrases=<file>        File containing phrases for each observation. [default: patterns/cxr14_phrases_v2.yml]
     --overwrite             Overwrite the output file.
     --workers=<n>           Number of threads [default: 1]
-    --files_per_worker=<n>  Number of input files per worker [default: 8]
+    --files_per_worker=<n>  Number of input files per worker [default: 32]
 """
 from pathlib import Path
 
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     argv = parse_args(__doc__)
     workers = int(argv['--workers'])
     if workers == 1:
-        phrases_file = Path(argv['--phrases_file'])
+        phrases_file = Path(argv['--phrases'])
         extractor = RegExExtractor(phrases_file, phrases_file.stem)
         pipeline = NegBioPipeline(pipeline=[('RegEx', extractor)])
         pipeline.scan(source=argv['<file>'], directory=argv['--output'], suffix=argv['--suffix'],
