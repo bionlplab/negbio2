@@ -1,23 +1,20 @@
-import re
 from pathlib import Path
 
 import bioc
-import yaml
 
-import negbio
+import tests
 from negbio.pipeline2.negdetect2 import get_text
 
-__project_dir = Path(negbio.__file__).parent.parent
+__tests_dir = Path(tests.__file__).parent
 
-phrases_file = __project_dir / 'patterns/chexpert_phrases.yml'
-
+phrases_file = __tests_dir / 'data/patterns/chexpert_phrases.yml'
 
 
 def test_get_text():
     s = bioc.BioCSentence()
     s.offset = 100
     s.text = 'no evidence of pulmonary edema'
-    loc = (25+100, 30+100)
+    loc = (25 + 100, 30 + 100)
 
     expected = 'no evidence of pulmonary $X$'
     actual = get_text(s, loc)
@@ -37,15 +34,15 @@ def test_get_text():
 #     m = re.search(pattern, '123 drain.')
 #     assert m is not None
 
-    # with open(phrases_file) as fp:
-    #     obj = yaml.load(fp, yaml.FullLoader)
-    #     pattern = obj['Support Devices']['include'][1]
-    #
-    # m = re.search(pattern, '123 lines.')
-    # assert m is not None
-    #
-    # m = re.search(pattern, '123line123')
-    # assert m is None
+# with open(phrases_file) as fp:
+#     obj = yaml.load(fp, yaml.FullLoader)
+#     pattern = obj['Support Devices']['include'][1]
+#
+# m = re.search(pattern, '123 lines.')
+# assert m is not None
+#
+# m = re.search(pattern, '123line123')
+# assert m is None
 
 
 if __name__ == '__main__':

@@ -3,17 +3,17 @@ from pathlib import Path
 
 import bioc
 
-import negbio
+import tests
 from negbio.pipeline2.dner_regex import RegExExtractor
 from tests.negbio.utils import get_example_dir
 
 
-__project_dir = Path(negbio.__file__).parent.parent
+__tests_dir = Path(tests.__file__).parent
 
 
 def test_chexpert_extractor():
-    phrases_dir = __project_dir / 'patterns'
-    extractor = RegExExtractor(phrases_dir / 'chexpert_phrases.yml', 'CheXpert labeler')
+    extractor = RegExExtractor(__tests_dir / 'data/patterns/chexpert_phrases.yml',
+                               'CheXpert labeler')
 
     dir = get_example_dir()
     with open(dir / '1.chexpert.xml') as fp:

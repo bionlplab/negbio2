@@ -2,17 +2,17 @@ from pathlib import Path
 
 import bioc
 
-import negbio
+import tests
 from negbio.neg.neg_detector import Detector
 from negbio.pipeline2.negdetect import NegBioNegDetector, is_neg_regex, _extend
 from negbio.pipeline2.ptb2ud import NegBioPtb2DepConverter
 from tests.negbio.utils import text_to_bioc
 
-__project_dir = Path(negbio.__file__).parent.parent
+__tests_dir = Path(tests.__file__).parent
 
-neg_pattern_file = __project_dir / 'patterns/neg_patterns2.yml'
+neg_pattern_file = __tests_dir / 'data/patterns/neg_patterns2.yml'
 
-uncertainty_pattern_file = __project_dir / 'patterns/uncertainty_patterns.yml'
+uncertainty_pattern_file = __tests_dir / 'data/patterns/uncertainty_patterns.yml'
 
 detector = NegBioNegDetector(Detector(
     neg_pattern_file=neg_pattern_file,

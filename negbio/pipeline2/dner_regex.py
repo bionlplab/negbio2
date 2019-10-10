@@ -65,7 +65,7 @@ class RegExExtractor(Pipe):
             enlarged_cardiomediastinum_unmentions
 
     def compile_pattern(self, pattern):
-        pattern = re.sub(' ', r'\s+', pattern)
+        pattern = re.sub(' ', r'\\s+', pattern)
         return re.compile(pattern, re.I|re.M)
 
     def overlaps_with_unmention(self, sentence, observation, start, end):
