@@ -98,7 +98,9 @@ class Detector:
 
 def find_nodes(graph, begin, end):
     for node in graph.nodes():
-        if utils.intersect((begin, end), (graph.nodes[node]['start'], graph.nodes[node]['end'])):
+        node_start = graph.nodes[node]['start']
+        node_end = graph.nodes[node]['end']
+        if utils.intersect((begin, end), (node_start, node_end)):
             yield node
 
 
