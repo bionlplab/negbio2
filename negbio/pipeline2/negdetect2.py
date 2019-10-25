@@ -238,7 +238,7 @@ def uncertain_mesh(annotations):
 
 def find_nodes(graph, begin, end):
     for node in graph.nodes():
-        if utils.intersect((begin, end), (graph.node[node]['start'], graph.node[node]['end'])):
+        if utils.intersect((begin, end), (graph.nodes[node]['start'], graph.nodes[node]['end'])):
             yield node
 
 

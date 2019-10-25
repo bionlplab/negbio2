@@ -98,16 +98,16 @@ class Detector:
 
 def find_nodes(graph, begin, end):
     for node in graph.nodes():
-        if utils.intersect((begin, end), (graph.node[node]['start'], graph.node[node]['end'])):
+        if utils.intersect((begin, end), (graph.nodes[node]['start'], graph.nodes[node]['end'])):
             yield node
 
 
 def is_neg_graph1(graph):
     # no XXX
     # resolution of XXX
-    if 'T0' in graph.node and graph.node['T0']['lemma'] in ['no', 'resolution', 'resolved']:
+    if 'T0' in graph.nodes and graph.nodes['T0']['lemma'] in ['no', 'resolution', 'resolved']:
         # no verb
-        has_verb = utils.contains(lambda x: graph.node[x]['tag'][0] == 'V', graph.nodes())
+        has_verb = utils.contains(lambda x: graph.nodes[x]['tag'][0] == 'V', graph.nodes())
         if not has_verb:
             return True
     return False
@@ -123,18 +123,18 @@ def is_neg_graph2(graph, begin, end):
     state = 0
     # sort nodes
     for node in sorted(graph.nodes(), key=lambda n: graph.node[n]['start']):
-        if graph.node[node]['end'] > end:
+        if graph.nodes[node]['end'] > end:
             break
 
         if state == 0:
-            if graph.node[node]['lemma'] in ('without', 'no', 'resolve', 'resolution'):
+            if graph.nodes[node]['lemma'] in ('without', 'no', 'resolve', 'resolution'):
                 state = 1
         elif state == 1:
-            if graph.node[node]['tag'].startswith('N'):
+            if graph.nodes[node]['tag'].startswith('N'):
                 state = 1
-                if utils.intersect((begin, end), (graph.node[node]['start'], graph.node[node]['end'])):
+                if utils.intersect((begin, end), (graph.nodes[node]['start'], graph.nodes[node]['end'])):
                     return True
-            elif graph.node[node]['tag'] in ('JJ', 'CC', ',', 'VBN'):
+            elif graph.nodes[node]['tag'] in ('JJ', 'CC', ',', 'VBN'):
                 state = 1
             else:
                 return False

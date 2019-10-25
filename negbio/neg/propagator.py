@@ -15,10 +15,10 @@ def propagate(G):
         edges = []
         for node in G.nodes():
             # hypoinflated but clear of
-            if G.node[node]['lemma'] == 'hypoinflated':
+            if G.nodes[node]['lemma'] == 'hypoinflated':
                 for child in G.successors(node):
                     edge_dep = G[node][child]['dependency']
-                    if G.node[child]['lemma'] == 'clear' and edge_dep == 'conj:but':
+                    if G.nodes[child]['lemma'] == 'clear' and edge_dep == 'conj:but':
                         for of in G.successors(node):
                             of_dep = G[node][of]['dependency']
                             if of_dep == 'nmod:of':
@@ -39,32 +39,32 @@ def propagate(G):
                         edges.append(Edge(c, child, edge_dep))
             # propagate dep
             if d['dependency'] == 'dep' \
-                    and G.node[p]['tag'].startswith('N') \
-                    and G.node[c]['tag'].startswith('N'):
+                    and G.nodes[p]['tag'].startswith('N') \
+                    and G.nodes[c]['tag'].startswith('N'):
                 for grandchild in G.successors(c):
                     edge_dep = G[c][grandchild]['dependency']
                     if edge_dep == 'neg':
                         edges.append(Edge(p, grandchild, edge_dep))
             # propagate cop conjunction
             if d['dependency'].startswith('conj') \
-                    and G.node[p]['tag'].startswith('N') \
-                    and G.node[c]['tag'].startswith('N'):
+                    and G.nodes[p]['tag'].startswith('N') \
+                    and G.nodes[c]['tag'].startswith('N'):
                 for child in G.successors(p):
                     edge_dep = G[p][child]['dependency']
                     if edge_dep in ('aux', 'cop', 'neg', 'amod'):
                         edges.append(Edge(c, child, edge_dep))
-                    if edge_dep in ('dep', 'compound') and G.node[child]['lemma'] == 'no':
+                    if edge_dep in ('dep', 'compound') and G.nodes[child]['lemma'] == 'no':
                         edges.append(Edge(c, child, edge_dep))
-                    if edge_dep == 'case' and G.node[child]['lemma'] == 'without':
+                    if edge_dep == 'case' and G.nodes[child]['lemma'] == 'without':
                         edges.append(Edge(c, child, edge_dep))
 
             # propagate area/amount >of XXX
-            if d['dependency'] == 'nmod:of' and G.node[p]['lemma'] in ('area', 'amount'):
+            if d['dependency'] == 'nmod:of' and G.nodes[p]['lemma'] in ('area', 'amount'):
                 for grandpa in G.predecessors(p):
                     edge_dep = G[grandpa][p]['dependency']
                     edges.append(Edge(grandpa, c, edge_dep))
             # propagate combination of XXX
-            if d['dependency'] == 'nmod:of' and G.node[p]['lemma'] == 'combination':
+            if d['dependency'] == 'nmod:of' and G.nodes[p]['lemma'] == 'combination':
                 for grandpa in G.predecessors(p):
                     edge_dep = G[grandpa][p]['dependency']
                     edges.append(Edge(grandpa, c, edge_dep))
@@ -75,14 +75,14 @@ def propagate(G):
                     if edge_dep == 'neg':
                         edges.append(Edge(c, child, edge_dep))
                     # propagate without <case x >of XXX
-                    if edge_dep == 'case' and G.node[child] == 'without':
+                    if edge_dep == 'case' and G.nodes[child] == 'without':
                         edges.append(Edge(c, child, edge_dep))
             # parse error
             # no xx and xxx
             if d['dependency'] == 'neg' and semgraph.has_out_node(G, p, ['or', 'and']):
                 for child in G.successors(p):
                     edge_dep = G[p][child]['dependency']
-                    if edge_dep == 'compound' and G.node[child]['tag'].startswith('N'):
+                    if edge_dep == 'compound' and G.nodes[child]['tag'].startswith('N'):
                         edges.append(Edge(child, c, 'neg'))
 
         has_more_edges = False

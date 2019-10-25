@@ -52,7 +52,7 @@ class NodePattern(NgrexPattern):
     def finditer(self, graph):
         for node in graph.nodes():
             if self._attributes:
-                if _match(self._attributes, graph.node[node]):
+                if _match(self._attributes, graph.nodes[node]):
                     yield MatcherObj(self, graph, [(self._name, node)])
             else:
                 yield MatcherObj(self, graph, [(self._name, node)])
