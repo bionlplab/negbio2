@@ -90,14 +90,14 @@ def aggregate(doc):
             else:
                 label = POSITIVE
 
+            # Don't add any labels for No Finding
+            if category == "No Finding":
+                continue
+
             # If at least one non-support category has a uncertain or
             # positive label, there was a finding
             if category != 'Support Devices' and label in [UNCERTAIN, POSITIVE]:
                 no_finding = False
-
-            # Don't add any labels for No Finding
-            if category == "No Finding":
-                continue
 
             # add exception for 'chf' and 'heart failure'
             if ((label in [UNCERTAIN, POSITIVE]) and
@@ -139,6 +139,8 @@ def create_prediction(source, dest, phrases_file, verbose=True):
 
             for doc in collection.documents:
                 label_dict = aggregate(doc)
+                # if doc.id == 's50351835':
+                #     print(label_dict)
                 label_vec = dict_to_vec(label_dict, total_findings)
                 findings = collections.OrderedDict()
                 findings['id'] = str(doc.id)
