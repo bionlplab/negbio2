@@ -3,7 +3,7 @@ bllipparser==2016.9.11
 docopt==0.6.2
 docutils==0.15.2
 JPype1==0.6.3
-networkx==2.2
+networkx==2.4
 nltk==3.4.5
 numpy==1.17.3
 pandas==0.25.2

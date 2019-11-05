@@ -9,7 +9,7 @@ from bllipparser import RerankingParser
 from negbio.pipeline2.pipeline import Pipe
 
 
-class Bllip(object):
+class Bllip:
     def __init__(self, model_dir=None):
         if model_dir is None:
             logging.debug("downloading GENIA+PubMed model if necessary ...")
@@ -49,6 +49,17 @@ class NegBioParser(Bllip, Pipe):
                 return False
         return True
 
+    def parse_sentence(self, sentence):
+        try:
+            text = sentence.text
+            if self._all_puncts(text):
+                sentence.infons[self.PARSE_TREE_ATTRIBUTE] = None
+            else:
+                sentence.infons[self.PARSE_TREE_ATTRIBUTE] = str(self.parse(text))
+        except:
+            sentence.infons[self.PARSE_TREE_ATTRIBUTE] = None
+            logging.exception('No parse tree for sentence: %s', sentence.offset)
+
     def __call__(self, doc, *args, **kwargs):
         """
         Parse sentences in BioC format
@@ -61,14 +72,5 @@ class NegBioParser(Bllip, Pipe):
         """
         for passage in doc.passages:
             for sentence in passage.sentences:
-                text = sentence.text
-                if self._all_puncts(text):
-                    sentence.infons[self.PARSE_TREE_ATTRIBUTE] = None
-                    continue
-                try:
-                    tree = self.parse(text)
-                    sentence.infons[self.PARSE_TREE_ATTRIBUTE] = str(tree)
-                except:
-                    sentence.infons[self.PARSE_TREE_ATTRIBUTE] = None
-                    logging.exception('No parse tree for sentence: %s', sentence.offset)
+                self.parse_sentence(sentence)
         return doc
