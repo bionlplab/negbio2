@@ -1,6 +1,7 @@
 import networkx as nx
-from negbio import ngrex
 import pytest
+
+from negbio import ngrex
 
 
 def get_graph():
@@ -43,7 +44,7 @@ def test_relation():
 def test_relation_next():
     G = get_graph()
     _helper(G,
-           '{lemma:/xxx/} >{dependency:/aaa/} ({lemma:/yyy/} >{dependency:/bbb/} {lemma:/zzz/})',
+            '{lemma:/xxx/} >{dependency:/aaa/} ({lemma:/yyy/} >{dependency:/bbb/} {lemma:/zzz/})',
             {'xxx'})
 
 
@@ -61,13 +62,16 @@ def test_relation_disj():
 def test_names():
     G = get_graph()
     pattern = ngrex.compile('{}=t >{dependency:/aaa|bbb/} {}')
-    actual = {m.get('t') for m in pattern.finditer(G)}
+    actual = {m.group('t') for m in pattern.finditer(G)}
     assert actual == {'xxx', 'yyy'}
 
-    with pytest.raises(KeyError):
+    with pytest.raises(IndexError):
         pattern = ngrex.compile('{}=t >{dependency:/aaa|bbb/} {}')
         m = next(pattern.finditer(G))
-        m.get('x')
+        m.group('x')
+
+    with pytest.raises(TypeError):
+        m.group(1.1)
 
 
 def test_MatcherObj():

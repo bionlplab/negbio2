@@ -70,6 +70,7 @@ t_REGEX = r'/(/|[^\n\r/])*?/'
 def t_error(t):
     raise TypeError('Unknown text "%s"' % (t.value,))
 
+
 lexer = lex.lex()
 
 
@@ -127,10 +128,7 @@ def p_RelationDisj(p):
     RelationDisj : RelationConj
                  | RelationConj '|' RelationDisj
     """
-    """
-    Returns:
-        ("OR", relation_list)
-    """
+    # ("OR", relation_list)
     if len(p) == 2:
         p[0] = ('OR', [p[1]])
     elif len(p) == 4:
@@ -212,6 +210,7 @@ def p_Description(p):
     else:
         p[0] = pattern.NodePattern(p[2], p[5])
 
+
 def p_Attributes(p):
     """
     Attributes : IDENTIFIER ':' REGEX
@@ -236,4 +235,3 @@ def p_error(p):
     raise TypeError("Syntax error at '%s'" % p.value)
 
 parser = yacc.yacc()
-
