@@ -1,12 +1,13 @@
 import logging
 
+import bioc
 import networkx as nx
 
 
-def load(sentence):
+def load(sentence: bioc.BioCSentence) -> nx.DiGraph:
     """
     Args:
-        sentence(BioCSentence): a sentence with tag, text, lemma, start and end
+        sentence: a sentence with tag, text, lemma, start and end
     
     Returns:
         DiGraph: dependency graph
