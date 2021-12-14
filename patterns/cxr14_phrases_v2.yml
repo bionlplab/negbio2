@@ -35,6 +35,7 @@ Emphysema:
   - emphysema
   exclude:
   - subcutaneous emphysema
+  - mediastinal emphysema
 Enlarged Cardiomediastinum:
   include:
   - ' mediastinum'
@@ -174,6 +175,7 @@ Pneumomediastinum:
   concept_id: RID28523
   include:
   - pneumomediastinum
+  - mediastinal emphysema
 Subcutaneous Emphysema:
   include:
   - subcutaneous emphysema
