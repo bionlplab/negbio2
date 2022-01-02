@@ -18,7 +18,7 @@ We are updating the NegBio's pipeline. To use the order version, please see [v0.
 1. Download NegBio
 
     ```bash
-    $ git clone https://github.com/yfpeng/negbio2.git
+    $ git clone https://github.com/bionlplab/negbio2.git
     $ cd /path/to/negbio2
     ```
 
