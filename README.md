@@ -2,10 +2,8 @@
 
 -----------------------
 
-[![Build status](https://github.com/yfpeng/negbio2/workflows/negbio2/badge.svg)](https://github.com/yfpeng/negbio2)
+[![Build status](https://github.com/bionlplab/negbio2/workflows/negbio2/badge.svg)](https://github.com/bionlplab/negbio2)
 [![RTD version](https://img.shields.io/readthedocs/negbio2.svg)](http://negbio2.readthedocs.io)
-[![HitCount](https://hits.dwyl.com/yfpeng/negbio2.svg)](https://hits.dwyl.com/yfpeng/negbio2)
-[![HitCount](https://requires.io/github/yfpeng/negbio2/requirements.svg?branch=master)](https://requires.io/github/yfpeng/negbio2/requirements/?branch=master)
 
 NegBio is a high-performance NLP tool for negation and uncertainty detection in clinical texts (e.g. radiology reports).
 
